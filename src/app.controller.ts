@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 
 import { Throttle } from '@nestjs/throttler';
 import { LeaderboardValidator } from './app.validator';
-import { AuthGuard } from '../src/auth/auth';
+import { AuthGuard } from './auth/auth.guard';
 
 @Controller()
 export class AppController {

@@ -7,7 +7,7 @@ import { LeaderboardValidator } from './app.validator';
 @Injectable()
 export class AppService {
   constructor(
-    @Inject(LeaderboardEntity)
+    @Inject('LEADERBOARD_REPOSITORY')
     private leaderboardRepository: Repository<LeaderboardEntity>
   ) { this.leaderboardRepository = leaderboardRepository; }
 

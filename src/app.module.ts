@@ -5,8 +5,9 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from '../src/auth/constants';
-import { DatabaseModule } from '../src/database/database.module';
+import { jwtConstants } from './auth/auth.constants';
+import { DatabaseModule } from './database/database.modules';
+import { leaderboardProviders } from './app.provider';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { DatabaseModule } from '../src/database/database.module';
     DatabaseModule],
   controllers: [AppController],
   providers: [
+    ...leaderboardProviders,
     AppService,
     {
       provide: APP_GUARD,
