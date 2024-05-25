@@ -12,16 +12,19 @@ import { leaderboardProviders } from './app.provider';
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    DatabaseModule,
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' },
+      verifyOptions: {
+        algorithms: ['HS256'],
+      }
     }),
     ThrottlerModule.forRoot([{
       ttl: 60000,
       limit: 10,
-    }]),
-    DatabaseModule],
+    }])],
   controllers: [AppController],
   providers: [
     ...leaderboardProviders,

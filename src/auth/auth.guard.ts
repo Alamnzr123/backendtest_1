@@ -29,9 +29,6 @@ export class AuthGuard implements CanActivate {
             // so that we can access it in our route handlers
             request['user'] = payload;
 
-            if (!payload['isAdmin'] && payload['name'] != request.body['name']) {
-                return false;
-            }
         } catch {
             throw new UnauthorizedException();
         }
